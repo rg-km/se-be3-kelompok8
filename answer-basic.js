@@ -232,6 +232,8 @@ function teleport(snake) {
 function levelCheck(snake) {
     if(snake.score % 5 === 0){
         level++;
+        let bel = new Audio('assets/game-over.mp3');
+        bel.play();
         MOVE_INTERVAL /= 1.2;
     }
 }

@@ -54,6 +54,56 @@ let lifeIcon = {
     position: initPosition(),
 }
 
+let dinding1 = {
+    position: {
+        x: [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],
+        y: [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5]
+    },
+    color: "black",
+}
+
+let dinding2 = {
+    position: {
+        x: [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],
+        y: [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10]
+    },
+    color: "black",
+}
+
+let dinding3 = {
+    position: {
+        x: [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],
+        y: [15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15]
+    },
+    color: "black",
+}
+
+let dinding4 = {
+    position: {
+        x: [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5],
+        y: [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],
+    },
+    color: "black",
+}
+
+let dinding5 = {
+    position: {
+        x: [15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15],
+        y: [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],
+    },
+    color: "black",
+}
+
+function bangunDinding(){
+    let positionLevel = level*10
+
+}
+
+function drawCell(ctx, x, y, color) {
+    ctx.fillStyle = color;
+    ctx.fillRect(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+}
+
 function drawGambar(ctx, img, x, y) {
     ctx.drawImage(img, x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
 }
@@ -112,6 +162,52 @@ function draw() {
             drawGambar(ctx, lifeIconImage, i+0.2, 0.2);
         }
 
+        if(level ===2){
+            for(let i = 0; i < dinding1.position.x.length; i++){
+                console.log("test")
+                drawCell(ctx, dinding1.position.x[i], dinding1.position.y[i], dinding1.color);
+                console.log("test2")
+            }
+        }else if(level === 3){
+            for(let i = 0; i < dinding1.position.x.length; i++){
+                console.log("test")
+                drawCell(ctx, dinding1.position.x[i], dinding1.position.y[i], dinding1.color);
+                console.log("test2")
+            }
+            for(let i = 0; i < dinding2.position.x.length; i++){
+                console.log("test")
+                drawCell(ctx, dinding2.position.x[i], dinding2.position.y[i], dinding2.color);
+                console.log("test2")
+            }
+        }else if (level === 4){
+            for(let i = 0; i < dinding1.position.x.length; i++){
+                console.log("test")
+                drawCell(ctx, dinding1.position.x[i], dinding1.position.y[i], dinding1.color);
+                console.log("test2")
+            }
+            for(let i = 0; i < dinding2.position.x.length; i++){
+                console.log("test")
+                drawCell(ctx, dinding2.position.x[i], dinding2.position.y[i], dinding2.color);
+                console.log("test2")
+            }
+            for(let i = 0; i < dinding3.position.x.length; i++){
+                console.log("test")
+                drawCell(ctx, dinding3.position.x[i], dinding3.position.y[i], dinding3.color);
+                console.log("test2")
+            }
+        }else if(level === 5){
+            for(let i = 0; i < dinding4.position.x.length; i++){
+                console.log("test")
+                drawCell(ctx, dinding4.position.x[i], dinding4.position.y[i], dinding4.color);
+                console.log("test2")
+            }
+            for(let i = 0; i < dinding5.position.x.length; i++){
+                console.log("test")
+                drawCell(ctx, dinding5.position.x[i], dinding5.position.y[i], dinding5.color);
+                console.log("test2")
+            }
+        }
+
         drawScore(snake1);
         document.getElementById("level").innerHTML = "Snake Game - Level " + level;
         document.getElementById("moveSpeed").innerHTML = "Speed: " + MOVE_INTERVAL + " .ms";
@@ -136,7 +232,7 @@ function teleport(snake) {
 function levelCheck(snake) {
     if(snake.score % 5 === 0){
         level++;
-        MOVE_INTERVAL /= 1.5;
+        MOVE_INTERVAL /= 1.2;
     }
 }
 
@@ -194,18 +290,48 @@ function moveUp(snake) {
 function checkCollision(snakes) {
     let isCollide = false;
     //this
-    for (let i = 0; i < snakes.length; i++) {
-        for (let j = 0; j < snakes.length; j++) {
-            for (let k = 1; k < snakes[j].body.length; k++) {
-                if (snakes[i].head.x == snakes[j].body[k].x && snakes[i].head.y == snakes[j].body[k].y) {
-                    isCollide = true;
-                }
-            }
+    for (let k = 1; k < snakes.body.length; k++) {
+        if (snakes.head.x == snakes.body[k].x && snakes.head.y == snakes.body[k].y) {
+            isCollide = true;
         }
     }
+
+    if(level >= 2 && level <= 4 ){
+        if(level >= 2){
+            for (let i = 0; i < dinding1.position.x.length; i++){
+                if (snakes.head.x == dinding1.position.x[i] && snakes.head.y == dinding1.position.y[i]){
+                    isCollide = true;
+                };
+            }
+        }if(level >= 3){
+            for (let i = 0; i < dinding2.position.x.length; i++){
+                if (snakes.head.x == dinding2.position.x[i] && snakes.head.y == dinding2.position.y[i]){
+                    isCollide = true;
+                };
+            }
+        }if(level >= 4){
+            for (let i = 0; i < dinding3.position.x.length; i++){
+                if (snakes.head.x == dinding3.position.x[i] && snakes.head.y == dinding3.position.y[i]){
+                    isCollide = true;
+                };
+            }
+        }
+    }else if(level === 5){
+        for (let i = 0; i < dinding4.position.x.length; i++){
+            if (snakes.head.x == dinding4.position.x[i] && snakes.head.y == dinding4.position.y[i]){
+                isCollide = true;
+            };
+        }
+        for (let i = 0; i < dinding5.position.x.length; i++){
+            if (snakes.head.x == dinding5.position.x[i] && snakes.head.y == dinding5.position.y[i]){
+                isCollide = true;
+            };
+        }
+    }
+
     if (isCollide) {
         if(life <= 0){
-            var bel = new Audio('game-over.mp3');
+            var bel = new Audio('assets/game-over.mp3');
             bel.play();
             alert("Game over");
             snake1 = initSnake();
@@ -235,7 +361,7 @@ function move(snake) {
             break;
     }
     moveBody(snake);
-    if (!checkCollision([snake1])) {
+    if (!checkCollision(snake)) {
         setTimeout(function() {
             move(snake);
         }, MOVE_INTERVAL);

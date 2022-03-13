@@ -336,8 +336,9 @@ function checkCollision(snakes) {
             var bel = new Audio('assets/game-over.mp3');
             bel.play();
             alert("Game over");
+            level = 1
             snake1 = initSnake();
-            life = 1;
+            life = 3;
         }else{
             snakes.score = 0;
             snake1 = initSnake();

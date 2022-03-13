@@ -94,11 +94,6 @@ let dinding5 = {
     color: "black",
 }
 
-function bangunDinding(){
-    let positionLevel = level*10
-
-}
-
 function drawCell(ctx, x, y, color) {
     ctx.fillStyle = color;
     ctx.fillRect(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
@@ -161,6 +156,7 @@ function draw() {
         for(let i = 0; i < life; i++){
             drawGambar(ctx, lifeIconImage, i+0.2, 0.2);
         }
+        console.log(life)
 
         if(level ===2){
             for(let i = 0; i < dinding1.position.x.length; i++){
@@ -316,14 +312,14 @@ function checkCollision(snakes) {
     }
 
     if (isCollide) {
-        if(life < 1){
+        if(life === 1){
             var bel = new Audio('assets/game-over.mp3');
             bel.play();
             alert("Game over");
             level = 1
             snake1 = initSnake();
             life = 3;
-        }else{
+        }else {
             snakes.score = 0;
             snake1 = initSnake();
             life--

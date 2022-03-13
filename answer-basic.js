@@ -164,47 +164,31 @@ function draw() {
 
         if(level ===2){
             for(let i = 0; i < dinding1.position.x.length; i++){
-                console.log("test")
                 drawCell(ctx, dinding1.position.x[i], dinding1.position.y[i], dinding1.color);
-                console.log("test2")
             }
         }else if(level === 3){
             for(let i = 0; i < dinding1.position.x.length; i++){
-                console.log("test")
                 drawCell(ctx, dinding1.position.x[i], dinding1.position.y[i], dinding1.color);
-                console.log("test2")
             }
             for(let i = 0; i < dinding2.position.x.length; i++){
-                console.log("test")
                 drawCell(ctx, dinding2.position.x[i], dinding2.position.y[i], dinding2.color);
-                console.log("test2")
             }
         }else if (level === 4){
             for(let i = 0; i < dinding1.position.x.length; i++){
-                console.log("test")
                 drawCell(ctx, dinding1.position.x[i], dinding1.position.y[i], dinding1.color);
-                console.log("test2")
             }
             for(let i = 0; i < dinding2.position.x.length; i++){
-                console.log("test")
                 drawCell(ctx, dinding2.position.x[i], dinding2.position.y[i], dinding2.color);
-                console.log("test2")
             }
             for(let i = 0; i < dinding3.position.x.length; i++){
-                console.log("test")
                 drawCell(ctx, dinding3.position.x[i], dinding3.position.y[i], dinding3.color);
-                console.log("test2")
             }
         }else if(level === 5){
             for(let i = 0; i < dinding4.position.x.length; i++){
-                console.log("test")
                 drawCell(ctx, dinding4.position.x[i], dinding4.position.y[i], dinding4.color);
-                console.log("test2")
             }
             for(let i = 0; i < dinding5.position.x.length; i++){
-                console.log("test")
                 drawCell(ctx, dinding5.position.x[i], dinding5.position.y[i], dinding5.color);
-                console.log("test2")
             }
         }
 
@@ -332,7 +316,7 @@ function checkCollision(snakes) {
     }
 
     if (isCollide) {
-        if(life <= 0){
+        if(life < 1){
             var bel = new Audio('assets/game-over.mp3');
             bel.play();
             alert("Game over");
